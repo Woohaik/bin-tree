@@ -1,7 +1,7 @@
-import { BT } from "./BT"
+import { BinaryTree } from "./BinaryTree"
 
 
-const tree = new BT(15);
+const tree = new BinaryTree(15);
 
 tree.insert(18)
 tree.insert(14)
