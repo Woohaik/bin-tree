@@ -8,6 +8,20 @@ export class BinaryTree {
         this.root = this.removeNode(this.root, value)
     }
 
+    inorden(node: Node): Number[] {
+        //Es el minimo de la rama
+        if (!node.getLeft()) {
+            if (!node.getRight()) return [node.getValue()] // Si no tiene derecha solo se devuelve a si mismo
+            return [node.getValue()].concat(this.inorden(node.getRight())) //Si tiene derecha concatena el actual ya que es el minimo de esta rama con la ordenacion de su derecha
+            //Aun hay numeros mas pequeños
+        } else {
+            if (node.getRight()) return this.inorden(node.getLeft()).concat(node.getValue()).concat(this.inorden(node.getRight()))
+            return this.inorden(node.getLeft()).concat(node.getValue())
+        }
+    }
+
+
+
     private removeNode(node: Node, value: Number): Node {
         // No hay nada - cierra ciclo recursividad
         if (!node) return null
