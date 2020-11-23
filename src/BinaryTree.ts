@@ -1,29 +1,66 @@
 import { Node } from "./Node";
 export class BinaryTree {
     root: Node;
-    constructor(rootValue: Number) {
-        this.root = new Node(rootValue);
+    constructor(rootValue: Number = null, content: any = null) {
+        rootValue ? this.root = new Node(rootValue, content) : this.root = null
     }
     remove(value: Number) {
         this.root = this.removeNode(this.root, value)
     }
-    insert(value: Number) {
-        this.root ? this.root.insert(new Node(value)) : this.root = new Node(value)
+    insert(value: Number, content: any = null) {
+        this.root ? this.root.insert(new Node(value, content)) : this.root = new Node(value, content)
     }
 
-    inorder(node: Node = this.root): Number[] {
-        return node ? this.inorder(node.getLeft()).concat(node.getValue()).concat(this.inorder(node.getRight())) : []
+
+    inorder(arg = { showBy: "Value" }): any[] {
+        const nodeArray: Node[] = this.internalInorder()
+        if (arg.showBy === "Node") {
+            return nodeArray;
+        }
+        if (arg.showBy === "Content") {
+            return nodeArray.map(node => node.getContent());
+        }
+        return nodeArray.map(node => node.getValue());
     }
 
-    postorder(node: Node = this.root): Number[] {
-        return node ? this.postorder(node.getLeft()).concat(this.postorder(node.getRight())).concat(node.getValue()) : []
+    postorder(arg = { showBy: "Value" }): any[] {
+        const nodeArray: Node[] = this.intervalPostorder()
+
+        if (arg.showBy === "Node") {
+            return nodeArray;
+        }
+
+        if (arg.showBy === "Content") {
+            return nodeArray.map(node => node.getContent());
+        }
+
+        return nodeArray.map(node => node.getValue());
     }
 
-    preorder(node: Node = this.root): Number[] {
-        return node ? [node.getValue()].concat(this.preorder(node.getLeft())).concat(this.preorder(node.getRight())) : []
+    preorder(arg = { showBy: "Value" }): any[] {
+        const nodeArray: Node[] = this.internalPreorder();
+        if (arg.showBy === "Node") {
+            return nodeArray;
+        }
+        if (arg.showBy === "Content") {
+            return nodeArray.map(node => node.getContent());
+        }
+
+        return nodeArray.map(node => node.getValue());
     }
 
     /*INTERNAL FUNCTIONS */
+    private internalPreorder(node: Node = this.root): Node[] {
+        return node ? [node].concat(this.internalPreorder(node.getLeft())).concat(this.internalPreorder(node.getRight())) : []
+    }
+    private internalInorder(node: Node = this.root): Node[] {
+        return node ? this.internalInorder(node.getLeft()).concat(node).concat(this.internalInorder(node.getRight())) : []
+    }
+
+    private intervalPostorder(node: Node = this.root): Node[] {
+        return node ? this.intervalPostorder(node.getLeft()).concat(this.intervalPostorder(node.getRight())).concat(node) : []
+    }
+
     private removeNode(node: Node, value: Number): Node {
         // No hay nada - cierra ciclo recursividad
         if (!node) return null

@@ -1,12 +1,20 @@
+interface IContent {
+    value: Number
+    content: any
+}
+
 export class Node {
-    private left: Node;
-    private right: Node;
-    private value: Number
+    private left: Node = null;
+    private right: Node = null;
+    private value: Number;
+    private content: any;
     //public parent: Node;
-    constructor(value: Number, left: Node = null, right: Node = null) {
-        this.left = left;
-        this.right = right;
+    constructor(value: Number, content: any = null) {
         this.value = value;
+        this.content = content;
+    }
+    getContent(): IContent {
+        return { value: this.value, content: this.content };
     }
 
     setLeft(left: Node) {
@@ -26,6 +34,10 @@ export class Node {
             } else {
                 this.left = node
             }
+        } else if (node.getValue() === this.value) {
+
+            throw new Error("Cannot repeat Value");
+
         }
     }
 

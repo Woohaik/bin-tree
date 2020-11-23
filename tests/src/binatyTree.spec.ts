@@ -2,6 +2,21 @@ import { BinaryTree } from "../../src/BinaryTree"
 
 describe("Binary Tree tests", () => {
 
+
+    describe("Should add root node when initilize without it", () => {
+        const tree: BinaryTree = new BinaryTree();
+
+        it("Root should be null", () => {
+            expect(tree.root).toBe(null);
+        })
+
+        it("Root should be 5", () => {
+            tree.insert(5);
+            expect(tree.root.getValue()).toBe(5);
+        })
+
+    })
+
     describe("Should add nodes", () => {
         const tree: BinaryTree = new BinaryTree(15);
         tree.insert(16)
@@ -82,7 +97,6 @@ describe("Binary Tree tests", () => {
             it("Removing the root with nestes nodes", () => {
                 const tree = new BinaryTree(15);
                 tree.insert(25);
-                tree.insert(15);
                 tree.insert(10);
                 tree.insert(7);
                 tree.insert(22);
@@ -98,12 +112,6 @@ describe("Binary Tree tests", () => {
             })
 
         })
-
-
-
-
-
-
     })
 
     describe("Get Min", () => {
@@ -121,15 +129,13 @@ describe("Binary Tree tests", () => {
 
     })
 
-
-
     describe("Ordering the Values", () => {
         const tree: BinaryTree = new BinaryTree(8);
-        tree.insert(3);
-        tree.insert(6);
-        tree.insert(1);
-        tree.insert(4);
-        tree.insert(7);
+        tree.insert(3, "The Content");
+        tree.insert(6, "Yee");
+        tree.insert(1, "L is Real");
+        tree.insert(4, 58);
+        tree.insert(7, 5);
         tree.insert(10);
         tree.insert(14);
         tree.insert(13);
@@ -145,6 +151,18 @@ describe("Binary Tree tests", () => {
         it("Pre-Order", () => {
             expect(tree.preorder()).toEqual(expect.arrayContaining([8, 3, 1, 6, 4, 7, 10, 14, 13]))
         })
+
+    })
+
+    describe("Cannot insert repeated Values ", () => {
+        const tree: BinaryTree = new BinaryTree();
+        tree.insert(5);
+        tree.insert(7);
+
+        it("Inserting Repating nodes should throw an error", () => {
+            expect(() => { tree.insert(5) }).toThrow("Cannot repeat Value")
+        })
+
 
     })
 

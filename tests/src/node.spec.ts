@@ -5,13 +5,17 @@ import { Node } from "../../src/Node";
 describe("Node Tests", () => {
 
     describe("Nodes Work", () => {
+        const node: Node = new Node(5, "Hello Word");
         it("Do nodes Work", () => {
-            const node: Node = new Node(5);
             expect(node.getValue()).toBe(5)
             expect(node.getRight()).toBeNull();
             expect(node.getLeft()).toBeNull();
-
         })
+        it("Nodes saves the content", () => {
+            expect(node.getContent()).toEqual(expect.objectContaining({ content: "Hello Word" }))
+        })
+
+
     })
 
     describe("Add Nested Nodes", () => {
@@ -31,4 +35,6 @@ describe("Node Tests", () => {
             expect(node.getLeft()).toMatchObject(leftNode);
         })
     })
+
+
 })
