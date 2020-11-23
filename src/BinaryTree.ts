@@ -1,4 +1,8 @@
 import { Node } from "./Node";
+
+interface showBy {
+    showBy: String
+}
 export class BinaryTree {
     root: Node;
     constructor(rootValue: Number = null, content: any = null) {
@@ -12,7 +16,7 @@ export class BinaryTree {
     }
 
 
-    inorder(arg = { showBy: "Value" }): any[] {
+    inorder(arg: showBy = { showBy: "Value" }): any[] {
         const nodeArray: Node[] = this.internalInorder()
         if (arg.showBy === "Node") {
             return nodeArray;
@@ -23,7 +27,7 @@ export class BinaryTree {
         return nodeArray.map(node => node.getValue());
     }
 
-    postorder(arg = { showBy: "Value" }): any[] {
+    postorder(arg: showBy = { showBy: "Value" }): any[] {
         const nodeArray: Node[] = this.intervalPostorder()
 
         if (arg.showBy === "Node") {
@@ -37,7 +41,7 @@ export class BinaryTree {
         return nodeArray.map(node => node.getValue());
     }
 
-    preorder(arg = { showBy: "Value" }): any[] {
+    preorder(arg: showBy = { showBy: "Value" }): any[] {
         const nodeArray: Node[] = this.internalPreorder();
         if (arg.showBy === "Node") {
             return nodeArray;

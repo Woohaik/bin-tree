@@ -130,28 +130,48 @@ describe("Binary Tree tests", () => {
     })
 
     describe("Ordering the Values", () => {
-        const tree: BinaryTree = new BinaryTree(8);
+        const tree: BinaryTree = new BinaryTree();
+        tree.insert(8);
         tree.insert(3, "The Content");
         tree.insert(6, "Yee");
         tree.insert(1, "L is Real");
         tree.insert(4, 58);
         tree.insert(7, 5);
-        tree.insert(10);
-        tree.insert(14);
-        tree.insert(13);
+        tree.insert(10, { minecraft: true });
+        tree.insert(14, ["IDK"]);
+        tree.insert(13, "Finished");
 
-        it("In-Order", () => {
-            expect(tree.inorder()).toEqual(expect.arrayContaining([1, 3, 4, 6, 7, 8, 10, 13, 14]));
+        describe("In-Orders", () => {
+            it("In-Order Default(Values)", () => {
+                expect(tree.inorder()).toEqual([1, 3, 4, 6, 7, 8, 10, 13, 14]);
+            })
+
+            it("In-Order Content(Values)", () => {
+                expect(tree.inorder({ showBy: "Content" })).toEqual([
+                    expect.objectContaining({ value: 1, content: "L is Real" }),
+                    expect.objectContaining({ value: 3, content: "The Content" }),
+                    expect.objectContaining({ value: 4, content: 58 }),
+                    expect.objectContaining({ value: 6, content: "Yee" }),
+                    expect.objectContaining({ value: 7, content: 5 }),
+                    expect.objectContaining({ value: 8, content: null }),
+                    expect.objectContaining({ value: 10, content: { minecraft: true } }),
+                    expect.objectContaining({ value: 13, content: "Finished" }),
+                    expect.objectContaining({ value: 14, content: ["IDK"] }),
+                ]);
+            })
         })
 
-        it("Post-Order", () => {
-            expect(tree.postorder()).toEqual(expect.arrayContaining([1, 4, 7, 6, 3, 13, 14, 10, 8]));
+        describe("Post-Orders", () => {
+            it("Post-Order Default(Values)", () => {
+                expect(tree.postorder()).toEqual([1, 4, 7, 6, 3, 13, 14, 10, 8]);
+            })
         })
 
-        it("Pre-Order", () => {
-            expect(tree.preorder()).toEqual(expect.arrayContaining([8, 3, 1, 6, 4, 7, 10, 14, 13]))
+        describe("Pre-Orders", () => {
+            it("Pre-Order Default(Values)", () => {
+                expect(tree.preorder()).toEqual([8, 3, 1, 6, 4, 7, 10, 14, 13])
+            })
         })
-
     })
 
     describe("Cannot insert repeated Values ", () => {
