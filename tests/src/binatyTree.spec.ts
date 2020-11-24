@@ -1,8 +1,7 @@
-import { BinaryTree } from "../../src/BinaryTree"
+import { BinaryTree } from "../../src/BinaryTree";
+import { Node } from "../../src/Node";
 
 describe("Binary Tree tests", () => {
-
-
     describe("Should add root node when initilize without it", () => {
         const tree: BinaryTree = new BinaryTree();
 
@@ -14,7 +13,6 @@ describe("Binary Tree tests", () => {
             tree.insert(5);
             expect(tree.root.getValue()).toBe(5);
         })
-
     })
 
     describe("Should add nodes", () => {
@@ -146,18 +144,31 @@ describe("Binary Tree tests", () => {
                 expect(tree.inorder()).toEqual([1, 3, 4, 6, 7, 8, 10, 13, 14]);
             })
 
-            it("In-Order Content(Values)", () => {
+            it("In-Order Content", () => {
                 expect(tree.inorder({ showBy: "Content" })).toEqual([
-                    expect.objectContaining({ value: 1, content: "L is Real" }),
-                    expect.objectContaining({ value: 3, content: "The Content" }),
-                    expect.objectContaining({ value: 4, content: 58 }),
-                    expect.objectContaining({ value: 6, content: "Yee" }),
-                    expect.objectContaining({ value: 7, content: 5 }),
-                    expect.objectContaining({ value: 8, content: null }),
-                    expect.objectContaining({ value: 10, content: { minecraft: true } }),
-                    expect.objectContaining({ value: 13, content: "Finished" }),
-                    expect.objectContaining({ value: 14, content: ["IDK"] }),
+                    { value: 1, content: "L is Real" },
+                    { value: 3, content: "The Content" },
+                    { value: 4, content: 58 },
+                    { value: 6, content: "Yee" },
+                    { value: 7, content: 5 },
+                    { value: 8, content: null },
+                    { value: 10, content: { minecraft: true } },
+                    { value: 13, content: "Finished" },
+                    { value: 14, content: ["IDK"] },
                 ]);
+            })
+            it("In-Order Node", () => {
+                const nodes: Node[] = tree.inorder({ showBy: "Node" })
+                expect(nodes[0]).toBeInstanceOf(Node);
+                expect(nodes[0].getContent()).toEqual({ value: 1, content: "L is Real" })
+                expect(nodes[1].getContent()).toEqual({ value: 3, content: "The Content" })
+                expect(nodes[2].getContent()).toEqual({ value: 4, content: 58 })
+                expect(nodes[3].getContent()).toEqual({ value: 6, content: "Yee" })
+                expect(nodes[4].getContent()).toEqual({ value: 7, content: 5 })
+                expect(nodes[5].getContent()).toEqual({ value: 8, content: null })
+                expect(nodes[6].getContent()).toEqual({ value: 10, content: { minecraft: true } })
+                expect(nodes[7].getContent()).toEqual({ value: 13, content: "Finished" })
+                expect(nodes[8].getContent()).toEqual({ value: 14, content: ["IDK"] })
             })
         })
 
@@ -165,14 +176,69 @@ describe("Binary Tree tests", () => {
             it("Post-Order Default(Values)", () => {
                 expect(tree.postorder()).toEqual([1, 4, 7, 6, 3, 13, 14, 10, 8]);
             })
+
+            it("Post-Order Content", () => {
+                expect(tree.postorder({ showBy: "Content" })).toEqual([
+                    { value: 1, content: "L is Real" },
+                    { value: 4, content: 58 },
+                    { value: 7, content: 5 },
+                    { value: 6, content: "Yee" },
+                    { value: 3, content: "The Content" },
+                    { value: 13, content: "Finished" },
+                    { value: 14, content: ["IDK"] },
+                    { value: 10, content: { minecraft: true } },
+                    { value: 8, content: null },
+
+                ]);
+            })
+            it("Post-Order Node", () => {
+                const nodes: Node[] = tree.postorder({ showBy: "Node" })
+                expect(nodes[0]).toBeInstanceOf(Node);
+                expect(nodes[0].getContent()).toEqual({ value: 1, content: "L is Real" })
+                expect(nodes[1].getContent()).toEqual({ value: 4, content: 58 })
+                expect(nodes[2].getContent()).toEqual({ value: 7, content: 5 })
+                expect(nodes[3].getContent()).toEqual({ value: 6, content: "Yee" })
+                expect(nodes[4].getContent()).toEqual({ value: 3, content: "The Content" })
+                expect(nodes[5].getContent()).toEqual({ value: 13, content: "Finished" })
+                expect(nodes[6].getContent()).toEqual({ value: 14, content: ["IDK"] })
+                expect(nodes[7].getContent()).toEqual({ value: 10, content: { minecraft: true } })
+                expect(nodes[8].getContent()).toEqual({ value: 8, content: null })
+            })
         })
 
         describe("Pre-Orders", () => {
             it("Pre-Order Default(Values)", () => {
                 expect(tree.preorder()).toEqual([8, 3, 1, 6, 4, 7, 10, 14, 13])
             })
+            it("Pre-Orders Content", () => {
+                expect(tree.preorder({ showBy: "Content" })).toEqual([
+                    { value: 8, content: null },
+                    { value: 3, content: "The Content" },
+                    { value: 1, content: "L is Real" },
+                    { value: 6, content: "Yee" },
+                    { value: 4, content: 58 },
+                    { value: 7, content: 5 },
+                    { value: 10, content: { minecraft: true } },
+                    { value: 14, content: ["IDK"] },
+                    { value: 13, content: "Finished" },
+                ]);
+            })
+            it("Pre-Order Node", () => {
+                const nodes: Node[] = tree.preorder({ showBy: "Node" })
+                expect(nodes[0]).toBeInstanceOf(Node);
+                expect(nodes[0].getContent()).toEqual({ value: 8, content: null })
+                expect(nodes[1].getContent()).toEqual({ value: 3, content: "The Content" })
+                expect(nodes[2].getContent()).toEqual({ value: 1, content: "L is Real" })
+                expect(nodes[3].getContent()).toEqual({ value: 6, content: "Yee" })
+                expect(nodes[4].getContent()).toEqual({ value: 4, content: 58 })
+                expect(nodes[5].getContent()).toEqual({ value: 7, content: 5 })
+                expect(nodes[6].getContent()).toEqual({ value: 10, content: { minecraft: true } })
+                expect(nodes[7].getContent()).toEqual({ value: 14, content: ["IDK"] })
+                expect(nodes[8].getContent()).toEqual({ value: 13, content: "Finished" })
+            })
         })
     })
+
 
     describe("Cannot insert repeated Values ", () => {
         const tree: BinaryTree = new BinaryTree();
@@ -184,6 +250,31 @@ describe("Binary Tree tests", () => {
         })
 
 
+    })
+
+
+    describe("Search for Node by value", () => {
+        const tree: BinaryTree = new BinaryTree();
+        tree.insert(4, "Hi");
+        tree.insert(8);
+        tree.insert(3, "The Content");
+        tree.insert(6, "Yee");
+        tree.insert(1, "L is Real");
+        tree.insert(7, 5);
+        it("Should Find a Node", () => {
+            expect(tree.search(4)).toBeInstanceOf(Node);
+        })
+
+        it("Should Find the Nodes", () => {
+            expect(tree.search(4).getContent()).toEqual({ value: 4, content: "Hi" })
+            expect(tree.search(8).getContent()).toEqual({ value: 8, content: null })
+            expect(tree.search(3).getLeft().getValue()).toEqual(1)
+        })
+
+        it("Returns null when theres no Node with that value", () => {
+            expect(tree.search(15)).toBeNull();
+            expect(tree.search(2)).toBeNull();
+        })
     })
 
 })

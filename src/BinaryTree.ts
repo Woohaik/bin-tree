@@ -1,8 +1,9 @@
 import { Node } from "./Node";
 
-interface showBy {
+interface IshowBy {
     showBy: String
 }
+
 export class BinaryTree {
     root: Node;
     constructor(rootValue: Number = null, content: any = null) {
@@ -15,8 +16,13 @@ export class BinaryTree {
         this.root ? this.root.insert(new Node(value, content)) : this.root = new Node(value, content)
     }
 
+    search(value: Number): Node {
+        return this.searchByValue(this.root, value);
+    }
 
-    inorder(arg: showBy = { showBy: "Value" }): any[] {
+
+
+    inorder(arg: IshowBy = { showBy: "Value" }): any[] {
         const nodeArray: Node[] = this.internalInorder()
         if (arg.showBy === "Node") {
             return nodeArray;
@@ -27,7 +33,7 @@ export class BinaryTree {
         return nodeArray.map(node => node.getValue());
     }
 
-    postorder(arg: showBy = { showBy: "Value" }): any[] {
+    postorder(arg: IshowBy = { showBy: "Value" }): any[] {
         const nodeArray: Node[] = this.intervalPostorder()
 
         if (arg.showBy === "Node") {
@@ -41,7 +47,7 @@ export class BinaryTree {
         return nodeArray.map(node => node.getValue());
     }
 
-    preorder(arg: showBy = { showBy: "Value" }): any[] {
+    preorder(arg: IshowBy = { showBy: "Value" }): any[] {
         const nodeArray: Node[] = this.internalPreorder();
         if (arg.showBy === "Node") {
             return nodeArray;
@@ -54,6 +60,16 @@ export class BinaryTree {
     }
 
     /*INTERNAL FUNCTIONS */
+    private searchByValue(node: Node, value: Number): Node {
+        if (!node) return null;
+        if (value > node.getValue()) {
+            return this.searchByValue(node.getRight(), value)
+        } else if (value < node.getValue()) {
+            return this.searchByValue(node.getLeft(), value)
+        } else {
+            return node;
+        }
+    }
     private internalPreorder(node: Node = this.root): Node[] {
         return node ? [node].concat(this.internalPreorder(node.getLeft())).concat(this.internalPreorder(node.getRight())) : []
     }
