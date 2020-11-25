@@ -1,9 +1,9 @@
-# bin-tree
+# tbin-tree
 
 A Node.js Binary Tree module that can add, delet, order, search nodes with any content
 
 ```sh
-npm install bin-tree --save
+npm install tbin-tree --save
 ```
 
 ## Usage
@@ -11,7 +11,7 @@ npm install bin-tree --save
 ### Example
 
 ```javascript
-const { BinaryTree } = require("bin-tree");
+const { BinaryTree } = require("tbin-tree");
 const myBinaryTree = new BinaryTree();
 myBinaryTree.insert(5, "Hello World!");
 myBinaryTree.insert(15, "Hello Sun!");

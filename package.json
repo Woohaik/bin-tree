@@ -1,5 +1,5 @@
 {
-  "name": "bin-tree",
+  "name": "tbin-tree",
   "version": "0.6.2",
   "description": "A Binary Tree Module implementation for adding, deleting , ordering , searching nodes with any content",
   "main": "index.js",
