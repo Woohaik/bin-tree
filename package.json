@@ -1,14 +1,25 @@
 {
-  "name": "bintree",
-  "version": "1.0.0",
-  "description": "",
+  "name": "bin-tree",
+  "version": "0.6.2",
+  "description": "A Binary Tree Module implementation for adding, deleting , ordering , searching nodes with any content",
   "main": "index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "dev": "nodemon src/index.ts --exec ts-node",
-    "test": "jest"
+    "test": "jest",
+    "build": "tsc --build",
+    "clean": "tsc --build --clean"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "Binary Tree",
+    "tree",
+    "data structure",
+    "Inorder",
+    "Preorder",
+    "Postorder",
+    "search"
+  ],
+  "author": "woohaik",
   "license": "ISC",
   "devDependencies": {
     "@types/jest": "^26.0.15",

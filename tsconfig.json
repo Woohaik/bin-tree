@@ -1,20 +1,11 @@
 {
-    "compilerOptions": {
-        "module": "commonjs",
-        "noImplicitAny": true,
-        "removeComments": true,
-        "preserveConstEnums": true,
-        "sourceMap": true,
-        "lib": [
-            "es2015"
-        ]
-    },
-    "include": [
-        "src/**/*"
-    ],
-    "exclude": [
-        "node_modules",
-        "**/*.test.ts",
-        "**/*.spec.ts"
-    ]
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "declaration": true,
+    "outDir": "./dist",
+    "strict": false
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "**/*.test.ts", "**/*.spec.ts"]
 }
