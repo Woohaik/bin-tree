@@ -10,6 +10,10 @@
     "build": "tsc --build",
     "clean": "tsc --build --clean"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Woohaik/bin-tree"
+  },
   "keywords": [
     "Binary Tree",
     "tree",
@@ -21,6 +25,7 @@
   ],
   "author": "woohaik",
   "license": "ISC",
+  "bugs": "https://github.com/Woohaik/bin-tree/issues",
   "devDependencies": {
     "@types/jest": "^26.0.15",
     "@types/node": "^14.14.8",
