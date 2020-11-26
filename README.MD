@@ -1,6 +1,8 @@
 # tbin-tree
 
-A Node.js Binary Tree module that can add, delet, order, search nodes with any content
+A Node.js Binary Tree module that can add, delete, order and search nodes with any content
+
+## Installation
 
 ```sh
 npm install tbin-tree --save
@@ -8,28 +10,169 @@ npm install tbin-tree --save
 
 ## Usage
 
-### Example
+### Quick Examples
+#### Javascript Example
 
 ```javascript
-const { BinaryTree } = require("tbin-tree");
-const myBinaryTree = new BinaryTree();
+const BinaryTree = require('./bin-tree/lib');
+const myBinaryTree = BinaryTree()
+// First param the value (Number) , and second optional param (Any) the content.
 myBinaryTree.insert(5, "Hello World!");
-myBinaryTree.insert(15, "Hello Sun!");
+myBinaryTree.insert(15, ["Im", "a", "Array", "!"]);
 myBinaryTree.insert(2, "Bye World!");
+
+const myNode = myBinaryTree.search(15);
+
+myNode.getContent() // => { value: 15, content:["Im", "a" , "Array", "!"]}
+
+// Without param the default is showBy="Value"
+
+myBinaryTree.inorder({ showBy: "Content" }); 
+
+/**
+ *    [
+ *       { value: 2, content: 'Bye World!' },
+ *       { value: 5, content: 'Hello World!' },
+ *       { value: 15, content: ['Im', 'a', 'Array', '!'] }
+ *   ]
+ */
+
 ```
 
-```sh
-
-```
-
-### TypeScript
+#### TypeScript Example
 
 ```typescript
-import { BinaryTree, Node } from "bin-tree";
+import { BinaryTree, Node } from './bin-tree/lib';
+
+const myBinaryTree = new BinaryTree();
+myBinaryTree.insert(5, "Hello World!");
+myBinaryTree.insert(15, ["Im", "a" , "Array", "!"]);
+myBinaryTree.insert(2, "Bye World!");
+
+const myNode: Node = myBinaryTree.search(15);
+myNode.getContent()
 ```
 
-## Test
+## Documentation
 
-```sh
-npm run test
+
+
+
+### Import
+```javascript
+const BinaryTree = require('./bin-tree/lib');
 ```
+
+### Initialize
+
+We could initialize the Binary Tree by the default function wich takes two optional parameters to initialize the root **Node**:
+* **value** : _Number_ (The unique identifier of a Node in base of this value the **Binary Tree** is ordered)
+* **content** : _Any_ (Any value that we want to store in the root **Node**)
+
+
+```javascript
+const myBinaryTree = BinaryTree(5, {fooKey :"Root Content"});
+```
+Also with the class BinaryTree
+```javascript
+const { BinaryTree } = require('./bin-tree/lib');
+const myBinaryTree = new BinaryTree(5, {fooKey :"Root Content"});
+const mySecondaryBinaryTree = new BinaryTree();
+```
+
+
+### Insert Values
+We must use the first parameter the value, the content is optional the default is null
+Repeat a value will throw an Error
+```javascript
+myBinaryTree.insert(11);
+myBinaryTree.insert(13, "Im the Content :D!");
+```
+
+### Delete Nodes
+Takes the target value to delete the node, reorganize the **Binary Tree** if we remove a Node with childs.
+```javascript
+myBinaryTree.remove(11);
+```
+
+### Search for Node 
+Takes the target value and returns the nodes if match, if there is no Node return null
+```javascript
+myBinaryTree.remove(11);
+```
+### Order the Binary Tree
+The library has 3 ways of order the **Binary Tree**.
+
+* Inorder
+* PostOrder
+* Preorder
+
+It returns an array of Nodes, its content or value.
+All takes an optional object argument, with the key = showBy='Value' as default.
+Also can show by: "Content", "Node"
+
+
+```javascript
+myBinaryTree.inorder({ showBy: "Content" }); 
+
+/**
+ *    [
+ *       { value: 2, content: 'Bye World!' },
+ *       { value: 5, content: 'Hello World!' },
+ *       { value: 15, content: ['Im', 'a', 'Array', '!'] }
+ *   ]
+ */
+
+myBinaryTree.inorder(); 
+
+// [2,5,15]
+
+```
+
+## Clases
+
+### BinaryTree
+| Method  | Paramaters | Description  |
+| ------------- |:-------------:|:-------------:|
+| insert      | right foo     |sfsdfsdf|
+| remove   | right bar     |sfsdfsdf|
+| search     | right baz     |sfsdfsdf|
+| inorder     | right baz     |sfsdfsdf|
+| postorder     | right baz     |sfsdfsdf|
+| preorder     | right baz     |sfsdfsdf|
+
+
+### Node
+| Method  | Paramaters | Description  |
+| ------------- |:-------------:|:-------------:|
+| insert      | right foo     |sfsdfsdf|
+| remove   | right bar     |sfsdfsdf|
+| search     | right baz     |sfsdfsdf|
+| inorder     | right baz     |sfsdfsdf|
+| postorder     | right baz     |sfsdfsdf|
+| preorder     | right baz     |sfsdfsdf|
+
+
+## license
+
+The MIT License (MIT)
+
+Copyright (c) 2020 Wilfredo Hernández - Woohaik
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.

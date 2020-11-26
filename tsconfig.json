@@ -1,13 +1,10 @@
 {
   "compilerOptions": {
-    "target": "es5",
     "module": "commonjs",
-    "declaration": true,
-    "declarationMap": true,
-    "sourceMap": true,
-    "outDir": "lib",
-    "strict": false,
-    "esModuleInterop": true
+    "target": "es5",
+    "outDir": "./lib",
+    "moduleResolution": "node",
+    "declaration": true
   },
   "include": [
     "src/**/*"

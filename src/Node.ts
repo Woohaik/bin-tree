@@ -13,6 +13,7 @@ export class Node {
         this.value = value;
         this.content = content;
     }
+
     getContent(): IContent {
         return { value: this.value, content: this.content };
     }
@@ -61,3 +62,4 @@ export class Node {
         return this.value
     }
 }
+

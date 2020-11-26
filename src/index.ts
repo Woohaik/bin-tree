@@ -1,12 +1,15 @@
 import { BinaryTree } from "./BinaryTree";
-import { Node } from "./Node";
+
+export { BinaryTree } from "./BinaryTree";
+export { Node } from "./Node";
 
 
 
-export default (value: Number, content: any = null) => {
+
+
+const defaultFunction = (value: Number = null, content: any = null) => {
     return new BinaryTree(value, content);
 }
 
-export { Node, BinaryTree };
 
-
+module.exports = defaultFunction;
