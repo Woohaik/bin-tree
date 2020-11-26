@@ -69,11 +69,6 @@ We could initialize the Binary Tree by the default function wich takes two optio
 * **value** : _Number_ (The unique identifier of a Node in base of this value the **Binary Tree** is ordered)
 * **content** : _Any_ (Any value that we want to store in the root **Node**)
 
-
-```javascript
-const myBinaryTree = BinaryTree(5, {fooKey :"Root Content"});
-```
-Also with the class BinaryTree
 ```javascript
 const { BinaryTree } = require('tbin-tree');
 const myBinaryTree = new BinaryTree(5, {fooKey :"Root Content"});
