@@ -59,8 +59,13 @@ describe("Binary Tree tests", () => {
                 tree.insert(8);
                 tree.insert(5);
                 expect(tree.root.getLeft().getLeft().getValue()).toBe(5)
+
+
+
+
                 tree.remove(5);
                 expect(tree.root.getLeft().getLeft()).toBeNull();
+      
             })
 
 

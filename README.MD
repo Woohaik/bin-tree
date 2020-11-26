@@ -131,29 +131,35 @@ myBinaryTree.inorder();
 
 ## Clases
 
+* **?** -Optional parameter "=" Default value 
+
 ### BinaryTree
 | Method  | Paramaters | Description  |
 | ------------- |:-------------:|:-------------:|
-| insert      | right foo     |sfsdfsdf|
-| remove   | right bar     |sfsdfsdf|
-| search     | right baz     |sfsdfsdf|
-| inorder     | right baz     |sfsdfsdf|
-| postorder     | right baz     |sfsdfsdf|
-| preorder     | right baz     |sfsdfsdf|
+| __Contructor__     | value(Number)? = null  , content(any)? = null   | Creates a new BinaryTree |
+| insert      | value(Number)  , content(any)? = null   | Insert a new Node in the BinaryTree |
+| remove   | value(Number)  | Removes a Node from the BinaryTree |
+| search  => _Node / null_   | value(Number)    | Search for a Node in the BinaryTree|
+| inorder => _Node[]_ / _any[]_ / _Number[]_      | arg(Object) ? = { showBy = "Value" }    | Travel the BinaryTree in inorder and gets the Nodes|
+| postorder => _Node[]_ / _any[]_ / _Number[]_    | arg(Object) ? = { showBy = "Value" }     | Travel the BinaryTree in postorder and gets the Nodes|
+| preorder => _Node[]_ / _any[]_ / _Number[]_     | arg(Object) ? = { showBy = "Value" }     | Travel the BinaryTree in preorder and gets the Nodes|
 
 
 ### Node
 | Method  | Paramaters | Description  |
 | ------------- |:-------------:|:-------------:|
-| insert      | right foo     |sfsdfsdf|
-| remove   | right bar     |sfsdfsdf|
-| search     | right baz     |sfsdfsdf|
-| inorder     | right baz     |sfsdfsdf|
-| postorder     | right baz     |sfsdfsdf|
-| preorder     | right baz     |sfsdfsdf|
+| __Contructor__     | value(Number)  , content(any)? = null   | Creates a new Node |
+| getContent  => _Object_      | _NONE_     | Get the content of the Node |
+| insert   | node(Node)     | Insert the Node as a child, if it can (No repeated values)|
+| setLeft   | node(Node)    | Insert the Node as left child, if it can (No repeated values)|
+| setRight    | node(Node)    |Insert the Node as right child, if it can (No repeated values)|
+| getLeft  => _Node_ / _null_     | _NONE_     |Get the left Node|
+| getRight => _Node_ / _null_     | _NONE_    |Get the right Node|
+| setValue     | value(Number)     |Force the value of Node|
+| getValue => _Number_    | _NONE_     |Get the value of the Node|
 
 
-## license
+## License
 
 The MIT License (MIT)
 

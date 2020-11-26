@@ -95,7 +95,8 @@ export class BinaryTree {
         }
         //No tiene hijos
         if (!(node.getRight() || node.getLeft())) {
-            return null;  //Se hace null asi mismo y fin del problema
+            node = null;
+            return node;  //Se hace null asi mismo y fin del problema
 
         }
         /// Tiene hijos

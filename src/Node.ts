@@ -19,7 +19,14 @@ export class Node {
     }
 
     setLeft(left: Node) {
-        this.left = left;
+        if (left === null) {
+            this.left = null;
+        } else {
+            if (left.getValue() < this.value) {
+                this.left = left;
+            }
+        }
+
     }
 
     insert(node: Node) {
@@ -43,7 +50,16 @@ export class Node {
     }
 
     setRight(right: Node) {
-        this.right = right;
+
+        if (right === null) {
+            this.right = null;
+        } else {
+            if (right.getValue() > this.value) {
+                this.right = right;
+            }
+        }
+
+
     }
 
     getLeft(): Node {
