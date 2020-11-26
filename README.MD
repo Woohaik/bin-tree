@@ -14,7 +14,7 @@ npm install tbin-tree --save
 #### Javascript Example
 
 ```javascript
-const BinaryTree = require('./bin-tree/lib');
+const BinaryTree = require('tbin-tree');
 const myBinaryTree = BinaryTree()
 // First param the value (Number) , and second optional param (Any) the content.
 myBinaryTree.insert(5, "Hello World!");
@@ -42,7 +42,7 @@ myBinaryTree.inorder({ showBy: "Content" });
 #### TypeScript Example
 
 ```typescript
-import { BinaryTree, Node } from './bin-tree/lib';
+import { BinaryTree, Node } from 'tbin-tree';
 
 const myBinaryTree = new BinaryTree();
 myBinaryTree.insert(5, "Hello World!");
@@ -60,7 +60,7 @@ myNode.getContent()
 
 ### Import
 ```javascript
-const BinaryTree = require('./bin-tree/lib');
+const BinaryTree = require('tbin-tree');
 ```
 
 ### Initialize
@@ -75,7 +75,7 @@ const myBinaryTree = BinaryTree(5, {fooKey :"Root Content"});
 ```
 Also with the class BinaryTree
 ```javascript
-const { BinaryTree } = require('./bin-tree/lib');
+const { BinaryTree } = require('tbin-tree');
 const myBinaryTree = new BinaryTree(5, {fooKey :"Root Content"});
 const mySecondaryBinaryTree = new BinaryTree();
 ```
