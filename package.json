@@ -23,7 +23,7 @@
     "search"
   ],
   "author": "woohaik",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": "https://github.com/Woohaik/bin-tree/issues",
   "devDependencies": {
     "@types/jest": "^26.0.15",

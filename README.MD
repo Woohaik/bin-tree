@@ -11,11 +11,11 @@ npm install tbin-tree --save
 ## Usage
 
 ### Quick Examples
-#### Javascript Example
+#### Javascript ES5 Example
 
 ```javascript
-const BinaryTree = require('tbin-tree');
-const myBinaryTree = BinaryTree()
+const { BinaryTree } = require('tbin-tree');
+const myBinaryTree = new BinaryTree()
 // First param the value (Number) , and second optional param (Any) the content.
 myBinaryTree.insert(5, "Hello World!");
 myBinaryTree.insert(15, ["Im", "a", "Array", "!"]);
@@ -39,9 +39,9 @@ myBinaryTree.inorder({ showBy: "Content" });
 
 ```
 
-#### TypeScript Example
+#### ES6 | TS Example
 
-```typescript
+```typescript 
 import { BinaryTree, Node } from 'tbin-tree';
 
 const myBinaryTree = new BinaryTree();
