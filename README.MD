@@ -60,12 +60,12 @@ myNode.getContent()
 
 ### Import
 ```javascript
-const BinaryTree = require('tbin-tree');
+const { BinaryTree } = require('tbin-tree');
 ```
 
 ### Initialize
 
-We could initialize the Binary Tree by the default function wich takes two optional parameters to initialize the root **Node**:
+We could initialize the Binary Tree by with two optional parameters to initialize the root **Node**:
 * **value** : _Number_ (The unique identifier of a Node in base of this value the **Binary Tree** is ordered)
 * **content** : _Any_ (Any value that we want to store in the root **Node**)
 
