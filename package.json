@@ -1,6 +1,6 @@
 {
   "name": "tbin-tree",
-  "version": "0.8.3",
+  "version": "0.8.4",
   "description": "A Binary Tree Module implementation for adding, deleting , ordering , searching nodes with any content",
   "main": "lib/index.js",
   "types": "lib",
