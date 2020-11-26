@@ -1,13 +1,13 @@
 {
   "name": "tbin-tree",
-  "version": "0.6.2",
+  "version": "0.6.3",
   "description": "A Binary Tree Module implementation for adding, deleting , ordering , searching nodes with any content",
-  "main": "index.js",
-  "types": "dist/index.d.ts",
+  "main": "lib/index.js",
+  "types": "lib",
   "scripts": {
     "dev": "nodemon src/index.ts --exec ts-node",
     "test": "jest",
-    "build": "tsc --build",
+    "build": "tsc -p .",
     "clean": "tsc --build --clean"
   },
   "repository": {
@@ -39,7 +39,5 @@
     "ts-node": "^9.0.0",
     "typescript": "^4.0.5"
   },
-  "dependencies": {
-    "D": "^1.0.0"
-  }
+  "dependencies": {}
 }

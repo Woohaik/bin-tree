@@ -19,3 +19,4 @@ export declare class BinaryTree {
     static searchMin(node: Node): Number;
 }
 export {};
+//# sourceMappingURL=BinaryTree.d.ts.map

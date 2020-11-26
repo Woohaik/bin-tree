@@ -18,3 +18,4 @@ export declare class Node {
     getValue(): Number;
 }
 export {};
+//# sourceMappingURL=Node.d.ts.map
