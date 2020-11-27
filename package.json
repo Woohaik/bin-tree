@@ -2,9 +2,11 @@
   "name": "tbin-tree",
   "version": "0.8.5",
   "description": "A Binary Tree Module implementation for adding, deleting , ordering , searching nodes with any content",
-  "main": "lib/index.js",
+  "main": "lib/index",
+  "typings": "lib/index",
   "types": "lib",
   "scripts": {
+    "prepublishOnly": "npm run build",
     "dev": "nodemon src/index.ts --exec ts-node",
     "test": "jest",
     "build": "tsc -p ."
@@ -24,7 +26,9 @@
   ],
   "author": "woohaik",
   "license": "MIT",
-  "bugs": "https://github.com/Woohaik/bin-tree/issues",
+  "bugs": {
+    "url": "https://github.com/Woohaik/bin-tree/issues"
+  },
   "devDependencies": {
     "@types/jest": "^26.0.15",
     "@types/node": "^14.14.10",
