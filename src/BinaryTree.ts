@@ -59,6 +59,10 @@ export class BinaryTree {
         return nodeArray.map(node => node.getValue());
     }
 
+    contain(value: Number[]): Boolean {
+        return true;
+    }
+
     /*INTERNAL FUNCTIONS */
     private searchByValue(node: Node, value: Number): Node {
         if (!node) return null;
