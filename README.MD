@@ -15,7 +15,7 @@ npm install tbin-tree --save
 #### Javascript ES5 Example
 
 ```javascript
-var { BinaryTree } = require("tbin-tree");
+var  BinaryTree  = require("tbin-tree").BinaryTree;
 var myBinaryTree = new BinaryTree();
 // First param the value (Number) , and second optional param (Any) the content.
 myBinaryTree.insert(5, "Hello World!");
