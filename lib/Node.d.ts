@@ -1,5 +1,5 @@
 interface IContent {
-    value: Number;
+    value: number;
     content: any;
 }
 export declare class Node {
@@ -7,14 +7,14 @@ export declare class Node {
     private right;
     private value;
     private content;
-    constructor(value: Number, content?: any);
+    constructor(value: number, content?: any);
     getContent(): IContent;
     setLeft(left: Node): void;
     insert(node: Node): void;
     setRight(right: Node): void;
     getLeft(): Node;
     getRight(): Node;
-    setValue(value: Number): void;
-    getValue(): Number;
+    setValue(value: number): void;
+    getValue(): number;
 }
 export {};

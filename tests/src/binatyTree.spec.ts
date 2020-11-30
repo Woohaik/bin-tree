@@ -65,7 +65,7 @@ describe("Binary Tree tests", () => {
 
                 tree.remove(5);
                 expect(tree.root.getLeft().getLeft()).toBeNull();
-      
+
             })
 
 
@@ -279,6 +279,57 @@ describe("Binary Tree tests", () => {
         it("Returns null when theres no Node with that value", () => {
             expect(tree.search(15)).toBeNull();
             expect(tree.search(2)).toBeNull();
+        })
+    })
+
+    describe("Looking if the tree contain certain values", () => {
+        const tree: BinaryTree = new BinaryTree();
+        tree.insert(4);
+        tree.insert(6, "I Have Content");
+        tree.insert(8);
+        tree.insert(1);
+        it("With empty array return true", () => {
+            expect(tree.contain([])).toBe(true);
+        })
+        it("Contain a single value", () => {
+            expect(tree.contain([1])).toBe(true);
+        })
+        it("Contain the single value repeated", () => {
+            expect(tree.contain([1, 1, 1, 1])).toBe(true);
+        })
+        it("Contain some values", () => {
+            expect(tree.contain([1, 6])).toBe(true);
+        })
+        it("Contain all values", () => {
+            expect(tree.contain([1, 4, 6, 8])).toBe(true);
+        })
+        it("Contain all values with no order", () => {
+            expect(tree.contain([4, 1, 8, 6])).toBe(true);
+        })
+        it("Contain all values repeated and with no order", () => {
+            expect(tree.contain([4, 1, 4, 1, 1, 8, 6, 4, 6])).toBe(true);
+        })
+        it("Should return false for a value that is not in the tree", () => {
+            expect(tree.contain([5])).toBe(false);
+            expect(tree.contain([15])).toBe(false);
+            expect(tree.contain([52])).toBe(false);
+            expect(tree.contain([0])).toBe(false);
+        })
+        it("Should return false if not all the values match", () => {
+            expect(tree.contain([11, 1, 6, 4])).toBe(false);
+            expect(tree.contain([2, 6, 4])).toBe(false);
+            expect(tree.contain([2, 1, 4, 4])).toBe(false);
+        })
+
+        it("The tree do not have any value", () => {
+            tree.remove(1);
+            tree.remove(8);
+            tree.remove(6);
+            tree.remove(4);
+            expect(tree.contain([1])).toBe(false);
+            expect(tree.contain([8])).toBe(false);
+            expect(tree.contain([6, 4, 1, 8])).toBe(false);
+            expect(tree.contain([])).toBe(true);
         })
     })
 

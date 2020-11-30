@@ -6,17 +6,17 @@ interface IshowBy {
 
 export class BinaryTree {
     root: Node;
-    constructor(rootValue: Number = null, content: any = null) {
+    constructor(rootValue: number = null, content: any = null) {
         rootValue ? this.root = new Node(rootValue, content) : this.root = null
     }
-    remove(value: Number) {
+    remove(value: number) {
         this.root = this.removeNode(this.root, value)
     }
-    insert(value: Number, content: any = null) {
+    insert(value: number, content: any = null) {
         this.root ? this.root.insert(new Node(value, content)) : this.root = new Node(value, content)
     }
 
-    search(value: Number): Node {
+    search(value: number): Node {
         return this.searchByValue(this.root, value);
     }
 
@@ -59,12 +59,15 @@ export class BinaryTree {
         return nodeArray.map(node => node.getValue());
     }
 
-    contain(value: Number[]): Boolean {
-        return true;
+    contain(value: number[]): boolean {
+        const theSet: number[] = [...new Set(value.sort((a: number, b: number) => a - b))];
+        const realValues: number[] = this.inorder();
+        // For an array where all numbers math the length should not change at filter comparing each one to real values of the tree
+        return theSet.filter(theValue => realValues.filter(realValue => realValue === theValue).length === 1).length === theSet.length;
     }
 
     /*INTERNAL FUNCTIONS */
-    private searchByValue(node: Node, value: Number): Node {
+    private searchByValue(node: Node, value: number): Node {
         if (!node) return null;
         if (value > node.getValue()) {
             return this.searchByValue(node.getRight(), value)
@@ -85,7 +88,7 @@ export class BinaryTree {
         return node ? this.intervalPostorder(node.getLeft()).concat(this.intervalPostorder(node.getRight())).concat(node) : []
     }
 
-    private removeNode(node: Node, value: Number): Node {
+    private removeNode(node: Node, value: number): Node {
         // No hay nada - cierra ciclo recursividad
         if (!node) return null
         if (value > node.getValue()) {
@@ -114,7 +117,7 @@ export class BinaryTree {
             //Tiene ambos
         } else {
             //Se pone el menor del lado derecho (Solo como valor no por referencia)y luego este se borra de el arbol
-            const minValue: Number = BinaryTree.searchMin(node.getRight())
+            const minValue: number = BinaryTree.searchMin(node.getRight())
 
             node.setValue(minValue) // El Nodo actual obtiene a borrar en realidad no se borra solo cambia de valor con el menor de su rama derecha 
 
@@ -129,7 +132,7 @@ export class BinaryTree {
 
     /*STATIC FUNCTIONS */
 
-    static searchMin(node: Node): Number {
+    static searchMin(node: Node): number {
         return node.getLeft() ? this.searchMin(node.getLeft()) : node.getValue();
     }
 

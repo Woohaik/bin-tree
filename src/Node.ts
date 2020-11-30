@@ -1,15 +1,15 @@
 interface IContent {
-    value: Number
+    value: number
     content: any
 }
 
 export class Node {
     private left: Node = null;
     private right: Node = null;
-    private value: Number;
+    private value: number;
     private content: any;
     //public parent: Node;
-    constructor(value: Number, content: any = null) {
+    constructor(value: number, content: any = null) {
         this.value = value;
         this.content = content;
     }
@@ -70,11 +70,11 @@ export class Node {
         return this.right
     }
 
-    setValue(value: Number) {
+    setValue(value: number) {
         this.value = value
     }
 
-    getValue(): Number {
+    getValue(): number {
         return this.value
     }
 }
