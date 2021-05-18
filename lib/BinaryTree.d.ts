@@ -2,20 +2,21 @@ import { Node } from "./Node";
 interface IshowBy {
     showBy: String;
 }
-export declare class BinaryTree {
-    root: Node;
-    constructor(rootValue?: Number, content?: any);
+export declare class BinaryTree<T = void> {
+    root: Node<T>;
+    constructor(rootValue?: Number, content?: T);
     remove(value: Number): void;
-    insert(value: Number, content?: any): void;
-    search(value: Number): Node;
+    insert(value: Number, content?: T): void;
+    search(value: Number): Node<T>;
     inorder(arg?: IshowBy): any[];
     postorder(arg?: IshowBy): any[];
     preorder(arg?: IshowBy): any[];
+    contain(value: Number[]): Boolean;
     private searchByValue;
     private internalPreorder;
     private internalInorder;
     private intervalPostorder;
     private removeNode;
-    static searchMin(node: Node): Number;
+    searchMin(node: Node<T>): Number;
 }
 export {};
