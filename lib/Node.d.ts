@@ -1,20 +1,21 @@
-interface IContent {
-    value: number;
-    content: any;
+
+interface IContent<T> {
+    value: Number;
+    content: T;
 }
-export declare class Node {
+export declare class Node<T = void> {
     private left;
     private right;
     private value;
     private content;
-    constructor(value: number, content?: any);
-    getContent(): IContent;
-    setLeft(left: Node): void;
-    insert(node: Node): void;
-    setRight(right: Node): void;
-    getLeft(): Node;
-    getRight(): Node;
-    setValue(value: number): void;
-    getValue(): number;
+    constructor(value: Number, content?: T);
+    getContent(): IContent<T>;
+    setLeft(left: Node<T>): void;
+    insert(node: Node<T>): void;
+    setRight(right: Node<T>): void;
+    getLeft(): Node<T>;
+    getRight(): Node<T>;
+    setValue(value: Number): void;
+    getValue(): Number;
 }
 export {};

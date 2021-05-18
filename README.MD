@@ -1,6 +1,6 @@
 # tbin-tree
 
-A Node.js binary tree module that can add, remove, search and traverse the nodes with any content.
+A Node.js binary tree module for add, remove, search and traverse the nodes with any content.
 
 ## Installation
 
@@ -17,16 +17,16 @@ npm install tbin-tree --save
 ```javascript
 var BinaryTree = require("tbin-tree").BinaryTree;
 var myBinaryTree = new BinaryTree();
-// First param the value (number) , and second optional param (Any) the content.
+// First argument the value (Number) , and second optional argument T the content.
 myBinaryTree.insert(5, "Hello World!");
-myBinaryTree.insert(15, ["Im", "a", "Array", "!"]);
+myBinaryTree.insert(15, "Nel");
 myBinaryTree.insert(2, "Bye World!");
 
 var myNode = myBinaryTree.search(15);
 
-myNode.getContent(); // => { value: 15, content:["Im", "a" , "Array", "!"]}
+myNode.getContent(); // => { value: 15, content:"Nel"}
 
-// Without param the default is showBy="Value"
+// Without arguments the default is showBy="Value"
 
 myBinaryTree.inorder({ showBy: "Content" });
 
@@ -34,7 +34,7 @@ myBinaryTree.inorder({ showBy: "Content" });
  *    [
  *       { value: 2, content: 'Bye World!' },
  *       { value: 5, content: 'Hello World!' },
- *       { value: 15, content: ['Im', 'a', 'Array', '!'] }
+ *       { value: 15, content: 'Nel'}
  *   ]
  */
 ```
@@ -44,9 +44,9 @@ myBinaryTree.inorder({ showBy: "Content" });
 ```typescript
 import { BinaryTree, Node, content } from "tbin-tree";
 
-const myBinaryTree = new BinaryTree();
+const myBinaryTree = new BinaryTree<string>();
 myBinaryTree.insert(5, "Hello World!");
-myBinaryTree.insert(15, ["Im", "a", "Array", "!"]);
+myBinaryTree.insert(15, "Nel");
 myBinaryTree.insert(2, "Bye World!");
 
 const myNode: Node = myBinaryTree.search(15);
@@ -63,20 +63,21 @@ const { BinaryTree } = require("tbin-tree");
 
 ### Initialize
 
-We could initialize the Binary Tree by with two optional parameters to initialize the root **Node**:
+We could initialize the Binary Tree by with two optional arguments to initialize the root **Node**:
 
-- **value** : _number_ (The unique identifier of a Node in base of this value the **Binary Tree** is ordered)
-- **content** : _Any_ (Any value that we want to store in the root **Node**)
+
+- **value** : _Number_ (The unique identifier of a Node in base of this value the **Binary Tree** is ordered)
+- **content** : _T_ (Any value that we want to store in the root **Node**)
 
 ```javascript
 const { BinaryTree } = require("tbin-tree");
-const myBinaryTree = new BinaryTree(5, { fooKey: "Root Content" });
+const myBinaryTree = new BinaryTree(5, "foo");
 const mySecondaryBinaryTree = new BinaryTree();
 ```
 
 ### Insert Values
 
-We must use the first parameter the value, the content is optional by default is null, repeating a value will throw an Error
+We must use the first argument the value, the content is optional by default is null, repeating a value will throw an Error
 
 ```javascript
 myBinaryTree.insert(11);
@@ -118,7 +119,7 @@ myBinaryTree.inorder({ showBy: "Content" });
  *    [
  *       { value: 2, content: 'Bye World!' },
  *       { value: 5, content: 'Hello World!' },
- *       { value: 15, content: ['Im', 'a', 'Array', '!'] }
+ *       { value: 15, content: 'Nel' }
  *   ]
  */
 
@@ -144,28 +145,27 @@ myBinaryTree.contain([]); // true
 
 ## Clases
 
-- **?** -Optional parameter "=" Default value
+- **?** -Optional argument "=" Default value
 
 ### BinaryTree
 
 | Method                                       |                  Paramaters                  |                             Description                             |
 | -------------------------------------------- | :------------------------------------------: | :-----------------------------------------------------------------: |
-| **Contructor**                               | value(number)? = null , content(any)? = null |                      Creates a new BinaryTree                       |
-| insert                                       |     value(number) , content(any)? = null     |                 Insert a new Node in the BinaryTree                 |
-| remove                                       |                value(number)                 |                 Removes a Node from the BinaryTree                  |
-| search => _Node / null_                      |                value(number)                 |                 Search for a Node in the BinaryTree                 |
-| inorder => _Node[]_ / _any[]_ / _number[]_   |     arg(Object) ? = { showBy = "Value" }     |        Traverse the BinaryTree in inorder and gets the Nodes        |
-| postorder => _Node[]_ / _any[]_ / _number[]_ |     arg(Object) ? = { showBy = "Value" }     |       Traverse the BinaryTree in postorder and gets the Nodes       |
-| preorder => _Node[]_ / _any[]_ / _number[]_  |     arg(Object) ? = { showBy = "Value" }     |       Traverse the BinaryTree in preorder and gets the Nodes        |
-| contain => _boolean_                         |                values(number[])              |        Verify if the BinaryTree contains all the given values       |
-| STATIC searchMin => number                   |                  node(Node)                  | Return the minimum value stored in a Node, counting the Node itself |
+| **Contructor**                               | value(Number)? = null , content(T)? = null   |                      Creates a new BinaryTree                       |
+| insert                                       |     value(Number) , content(T)? = null       |                 Insert a new Node in the BinaryTree                 |
+| remove                                       |                value(Number)                 |                 Removes a Node from the BinaryTree                  |
+| search => _Node / null_                      |                value(Number)                 |                 Search for a Node in the BinaryTree                 |
+| inorder => _Node[]_ / _T[]_ / _Number[]_     |     arg(Object) ? = { showBy = "Value" }     |        Traverse the BinaryTree in inorder and gets the Nodes        |
+| postorder => _Node[]_ / _T[]_ / _Number[]_   |     arg(Object) ? = { showBy = "Value" }     |       Traverse the BinaryTree in postorder and gets the Nodes       |
+| preorder => _Node[]_ / _T[]_ / _Number[]_    |     arg(Object) ? = { showBy = "Value" }     |       Traverse the BinaryTree in preorder and gets the Nodes        |
+| searchMin => Number                         |                  node(Node)                  | Return the minimum value stored in a Node, counting the Node itself |
 
 ### Node
 
 | Method                      |              Paramaters              |                          Description                           |
 | --------------------------- | :----------------------------------: | :------------------------------------------------------------: |
-| **Contructor**              | value(number) , content(any)? = null |                       Creates a new Node                       |
-| getContent => _content_      |                _NONE_                |                  Get the content of the Node                   |
+| **Contructor**              | value(Number) , content(T)? = null   |                       Creates a new Node                       |
+| getContent => _Object_      |                _NONE_                |                  Get the content of the Node                   |
 | insert                      |              node(Node)              |   Insert the Node as a child, if it can (No repeated values)   |
 | setLeft                     |              node(Node)              | Insert the Node as left child, if it can (No repeated values)  |
 | setRight                    |              node(Node)              | Insert the Node as right child, if it can (No repeated values) |

@@ -1,7 +1,7 @@
 {
   "name": "tbin-tree",
-  "version": "0.8.8",
-  "description": "A Node.js binary tree module that can add, remove, search and traverse the nodes with any content.",
+  "version": "0.10.0",
+  "description": "A Binary Tree Module implementation for add, delete, order and search nodes with any content",
   "main": "lib/index",
   "typings": "lib/index",
   "types": "lib",
