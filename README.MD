@@ -1,6 +1,6 @@
 # tbin-tree
 
-A Node.js binary tree module that can add, remove, search and traverse the nodes with any content.
+A Node.js binary tree module for add, remove, search and traverse the nodes with any content.
 
 ## Installation
 
