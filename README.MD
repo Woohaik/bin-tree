@@ -15,9 +15,9 @@ npm install tbin-tree --save
 #### Javascript ES5 Example
 
 ```javascript
-var BinaryTree  = require("tbin-tree").BinaryTree;
+var BinaryTree = require("tbin-tree").BinaryTree;
 var myBinaryTree = new BinaryTree();
-// First param the value (Number) , and second optional argument T the content.
+// First argument the value (Number) , and second optional argument T the content.
 myBinaryTree.insert(5, "Hello World!");
 myBinaryTree.insert(15, "Nel");
 myBinaryTree.insert(2, "Bye World!");
@@ -42,7 +42,7 @@ myBinaryTree.inorder({ showBy: "Content" });
 #### ES6 | TS Example
 
 ```typescript
-import { BinaryTree, Node } from "tbin-tree";
+import { BinaryTree, Node, content } from "tbin-tree";
 
 const myBinaryTree = new BinaryTree<string>();
 myBinaryTree.insert(5, "Hello World!");
@@ -50,7 +50,7 @@ myBinaryTree.insert(15, "Nel");
 myBinaryTree.insert(2, "Bye World!");
 
 const myNode: Node = myBinaryTree.search(15);
-myNode.getContent();
+const theContent: content = myNode.getContent();
 ```
 
 ## Documentation
@@ -64,6 +64,7 @@ const { BinaryTree } = require("tbin-tree");
 ### Initialize
 
 We could initialize the Binary Tree by with two optional arguments to initialize the root **Node**:
+
 
 - **value** : _Number_ (The unique identifier of a Node in base of this value the **Binary Tree** is ordered)
 - **content** : _T_ (Any value that we want to store in the root **Node**)
@@ -127,6 +128,21 @@ myBinaryTree.inorder();
 // [2,5,15]
 ```
 
+### Verifying values
+
+Verify if the **Binary Tree** contain all the given values, accept repeated values.
+
+```javascript
+myBinaryTree.contain([ 2 , 5 ]); // true
+myBinaryTree.contain([ 5 , 2 , 15 ]); // true
+myBinaryTree.contain([ 5 , 2 , 2 , 5 ,15 ]); // true
+myBinaryTree.contain([ 5 , 99 ]); // false
+myBinaryTree.contain([]); // true
+
+```
+
+
+
 ## Clases
 
 - **?** -Optional argument "=" Default value
@@ -155,8 +171,8 @@ myBinaryTree.inorder();
 | setRight                    |              node(Node)              | Insert the Node as right child, if it can (No repeated values) |
 | getLeft => _Node_ / _null_  |                _NONE_                |                       Get the left Node                        |
 | getRight => _Node_ / _null_ |                _NONE_                |                       Get the right Node                       |
-| setValue                    |            value(Number)             |                    Force the value of Node                     |
-| getValue => _Number_        |                _NONE_                |                   Get the value of the Node                    |
+| setValue                    |            value(number)             |                    Force the value of Node                     |
+| getValue => _number_        |                _NONE_                |                   Get the value of the Node                    |
 
 ## License
 

@@ -1,3 +1,4 @@
+
 interface IContent<T> {
     value: Number;
     content: T;
