@@ -5,7 +5,7 @@ import { Node } from "../../src/Node";
 describe("Node Tests", () => {
 
     describe("Nodes Work", () => {
-        const node: Node = new Node(5, "Hello Word");
+        const node: Node<string> = new Node(5, "Hello Word");
         it("Do nodes Work", () => {
             expect(node.getValue()).toBe(5)
             expect(node.getRight()).toBeNull();

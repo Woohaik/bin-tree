@@ -4,26 +4,26 @@ interface IshowBy {
     showBy: String
 }
 
-export class BinaryTree {
-    root: Node;
-    constructor(rootValue: Number = null, content: any = null) {
+export class BinaryTree<T = void> {
+    root: Node<T>;
+    constructor(rootValue: Number = null, content: T = null) {
         rootValue ? this.root = new Node(rootValue, content) : this.root = null
     }
     remove(value: Number) {
         this.root = this.removeNode(this.root, value)
     }
-    insert(value: Number, content: any = null) {
+    insert(value: Number, content: T = null) {
         this.root ? this.root.insert(new Node(value, content)) : this.root = new Node(value, content)
     }
 
-    search(value: Number): Node {
+    search(value: Number): Node<T> {
         return this.searchByValue(this.root, value);
     }
 
 
 
     inorder(arg: IshowBy = { showBy: "Value" }): any[] {
-        const nodeArray: Node[] = this.internalInorder()
+        const nodeArray: Node<T>[] = this.internalInorder()
         if (arg.showBy === "Node") {
             return nodeArray;
         }
@@ -34,7 +34,7 @@ export class BinaryTree {
     }
 
     postorder(arg: IshowBy = { showBy: "Value" }): any[] {
-        const nodeArray: Node[] = this.intervalPostorder()
+        const nodeArray: Node<T>[] = this.intervalPostorder()
 
         if (arg.showBy === "Node") {
             return nodeArray;
@@ -48,7 +48,7 @@ export class BinaryTree {
     }
 
     preorder(arg: IshowBy = { showBy: "Value" }): any[] {
-        const nodeArray: Node[] = this.internalPreorder();
+        const nodeArray: Node<T>[] = this.internalPreorder();
         if (arg.showBy === "Node") {
             return nodeArray;
         }
@@ -64,7 +64,7 @@ export class BinaryTree {
     }
 
     /*INTERNAL FUNCTIONS */
-    private searchByValue(node: Node, value: Number): Node {
+    private searchByValue(node: Node<T>, value: Number): Node<T> {
         if (!node) return null;
         if (value > node.getValue()) {
             return this.searchByValue(node.getRight(), value)
@@ -74,18 +74,18 @@ export class BinaryTree {
             return node;
         }
     }
-    private internalPreorder(node: Node = this.root): Node[] {
+    private internalPreorder(node: Node<T> = this.root): Node<T>[] {
         return node ? [node].concat(this.internalPreorder(node.getLeft())).concat(this.internalPreorder(node.getRight())) : []
     }
-    private internalInorder(node: Node = this.root): Node[] {
+    private internalInorder(node: Node<T> = this.root): Node<T>[] {
         return node ? this.internalInorder(node.getLeft()).concat(node).concat(this.internalInorder(node.getRight())) : []
     }
 
-    private intervalPostorder(node: Node = this.root): Node[] {
+    private intervalPostorder(node: Node<T> = this.root): Node<T>[] {
         return node ? this.intervalPostorder(node.getLeft()).concat(this.intervalPostorder(node.getRight())).concat(node) : []
     }
 
-    private removeNode(node: Node, value: Number): Node {
+    private removeNode(node: Node<T>, value: Number): Node<T> {
         // No hay nada - cierra ciclo recursividad
         if (!node) return null
         if (value > node.getValue()) {
@@ -114,7 +114,7 @@ export class BinaryTree {
             //Tiene ambos
         } else {
             //Se pone el menor del lado derecho (Solo como valor no por referencia)y luego este se borra de el arbol
-            const minValue: Number = BinaryTree.searchMin(node.getRight())
+            const minValue: Number = this.searchMin(node.getRight())
 
             node.setValue(minValue) // El Nodo actual obtiene a borrar en realidad no se borra solo cambia de valor con el menor de su rama derecha 
 
@@ -127,9 +127,8 @@ export class BinaryTree {
     }
 
 
-    /*STATIC FUNCTIONS */
 
-    static searchMin(node: Node): Number {
+    searchMin(node: Node<T>): Number {
         return node.getLeft() ? this.searchMin(node.getLeft()) : node.getValue();
     }
 

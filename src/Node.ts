@@ -1,24 +1,24 @@
-interface IContent {
+interface IContent<T> {
     value: Number
-    content: any
+    content:T
 }
 
-export class Node {
-    private left: Node = null;
-    private right: Node = null;
+export class Node <T = void>{
+    private left: Node<T> = null;
+    private right: Node<T> = null;
     private value: Number;
-    private content: any;
+    private content:T;
     //public parent: Node;
-    constructor(value: Number, content: any = null) {
+    constructor(value: Number, content: T = null) {
         this.value = value;
         this.content = content;
     }
 
-    getContent(): IContent {
+    getContent(): IContent<T> {
         return { value: this.value, content: this.content };
     }
 
-    setLeft(left: Node) {
+    setLeft(left: Node<T>) {
         if (left === null) {
             this.left = null;
         } else {
@@ -29,7 +29,7 @@ export class Node {
 
     }
 
-    insert(node: Node) {
+    insert(node: Node<T>) {
         if (node.getValue() > this.value) {
             if (this.right) {
                 this.right.insert(node)
@@ -49,7 +49,7 @@ export class Node {
         }
     }
 
-    setRight(right: Node) {
+    setRight(right: Node<T>) {
 
         if (right === null) {
             this.right = null;
@@ -62,11 +62,11 @@ export class Node {
 
     }
 
-    getLeft(): Node {
+    getLeft(): Node<T> {
         return this.left
     }
 
-    getRight(): Node {
+    getRight(): Node<T> {
         return this.right
     }
 
